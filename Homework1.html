@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .border{
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="left" style="float: left">
+        <img style="margin-top: -400px" :src="currentImg">
+    </div>
+    <div id="right" style="float: left">
+        <p>颜色选择</p >
+        <li style="list-style: none" v-for="(item,index) in appleList"  :class="{'border':active == index}"  @click="doClick(index)">
+            <p style="background: #E0E0E0;">{{item.colorName}}</p >
+        </li>
+    </div>
+</div>
+<script>
+    new Vue({
+        el:"#main",
+        data() {
+            return{
+                appleList:[
+                    {src:'img/1.jpg',colorName:'银尊贵色【公开版，官方标配，64G】'},
+                    {src:'img/2.jpg',colorName:'暗夜绿色【公开版，官方标配，64G】'},
+                    {src:'img/3.jpg',colorName:'深空灰色【公开版，官方标配，64G】'},
+                    {src:'img/4.jpg',colorName:'玫瑰金色【公开版，官方标配，64G】'}],
+                active:-1,
+                currentImg:'img/1.jpg'
+            }
+        },
+        methods:{
+            doClick(index){
+                this.active=index;
+                this.currentImg=this.appleList[index].src;
+            }
+        }
+    })
+</script>
+</body>
+</html>
